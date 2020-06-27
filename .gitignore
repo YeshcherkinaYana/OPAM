@@ -1,32 +1,49 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+ 
+using namespace std;
+ 
+int _tmain(int argc, _TCHAR* argv[])
+{
+    setlocale (LC_ALL,"Russian");
+    srand (time (NULL));
+ 
+    const int N = 10;
+    int *massiv;
+    int arr[N],k = 0;
+ 
+    massiv = new int [N];
+ 
+    cout<<"Начальный массив: ";
+        cout<<endl;
+    for (register int i = 0;i<N;i++)
+    {
+        massiv[i] = -10 + rand () % 21;
+        cout<<setw (3)<<massiv[i];
+    }
+ 
+    for (int i = 0;i<N;i++)
+    {
+        if (massiv[i] == 0)
+            {
+                arr[k] = i;
+                k++;
+            }
+    }
+ 
+    cout<<"\nСформированный массив: ";
+        cout<<endl;
+    for (int i = 0;i<k;i++)
+    {
+        cout<<setw (3)<<arr[i];
+    }
+ 
+    delete [] massiv;
+ 
+    cout<<endl;
+ 
+    system ("pause");
+    return 0;
+}
